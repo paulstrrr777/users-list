@@ -1,10 +1,21 @@
 <mat-selection-list #users>
-    <mat-list-option *ngFor="let user of usersList">
-      {{user.name}}
-      {{user.username}}
+    <mat-list-option 
+    *ngFor="let user of usersList; let i = index"
+    [ngClass] = "{'gray': i%2 }" >
+      <div>
+        
+      
+      <span class="items" >{{i +1}} - {{user.name}} </span>
+      <span class="items"> {{user.username}} </span>
+      <span class="items"  *ngIf="user.role === 'Admin'">{{user.role}}</span>
+    </div>
     </mat-list-option>
   </mat-selection-list>
   
   <p>
     Options selected: {{users.selectedOptions.selected.length}}
   </p>
+  <!-- <div *ngFor="let users of usersList">
+     <span *ngIf="users.role === 'Admin'">{{users.name}}</span> 
+    <span [ngClass] = "{'gray': users.role === 'Admin'}">{{users.name}}</span>
+  </div> -->
